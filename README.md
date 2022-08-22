@@ -93,6 +93,9 @@ Internally, `libgpx` has no further dependencies - it does not even include `<st
 
 #### LIBGPX__XML_STRING_ALLOCATED_LENGTH
 
+- ***Value:*** 65
+- Used to allocate memory to character arrays storing strings from the XML file
+
 ### Types
 
 #### libgpx_GPX
@@ -110,6 +113,9 @@ This is the base type, pulling together all the GPX sub-types
 #### libgpx_GPXAuthor
 
 Contains information about the author of the GPX file for [`libgpx_GPXMetadata`](#libgpxgpxmetadata) types
+
+- **email** _[`libgpx_GPXEmail`](#libgpxgpxemail)_ - A contact e-mail address for the GPX author
+- **name**[[`LIBGPX__XML_STRING_ALLOCATED_LENGTH`](#libgpxxmlstringallocatedlength)] - The name of the author of the GPX file
 
 #### libgpx_GPXCopyright
 
