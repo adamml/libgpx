@@ -16,6 +16,7 @@ A minimalist, ANSI compliant C library to parse the content of GPX files.
         - [LIBGPX__COLLECTION_TYPE_TRKSEG](#libgpxcollectiontypetrkseg)
         - [LIBGPX__XML_STRING_ALLOCATED_LENGTH](#libgpxxmlstringallocatedlength)
     - [Types](#types)
+        - [libgpx_BoundingBox]
         - [libgpx_GPX](#libgpxgpx)
         - [libgpx_GPXAuthor](#libgpxgpxauthor)
         - [libgpx_GPXCopyright](#libgpxgpxcopyright)
@@ -98,6 +99,8 @@ Internally, `libgpx` has no further dependencies - it does not even include `<st
 
 ### Types
 
+#### libgpx_BoundingBox
+
 #### libgpx_GPX
 
 This is the base type, pulling together all the GPX sub-types
@@ -153,6 +156,8 @@ Contains informtion grouping instances of [`libgpx_GPXPoint`](#libgpxgpxpoint) i
 - **type**[[`LIBGPX__XML_STRING_ALLOCATED_LENGTH`](#libgpxxmlstringallocatedlength)] _char_ -
 
 ### Functions
+
+#### void libgpx_bounding_box_from_gpx_object(libgpx_GPX* sgpx, libgpx_BoundingBox* box)
 
 #### int libgpx_count_gpx_types(char* gpx, libgpx_GPX* sgpx)
 

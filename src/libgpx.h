@@ -16,9 +16,18 @@
 #define LIBGPX__COLLECTION_TYPE_TRK 1
 #define LIBGPX__COLLECTION_TYPE_TRKSEG 2
 
-#ifdef _cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
+
+typedef struct libgpx_sBounndingBox{
+    float max_ele;
+    float min_ele;
+    float max_lat;
+    float min_lat;
+    float max_lon;
+    float min_lon;
+} libgpx_BoundingBox;
 
 typedef struct libgpx_sGPXLink{
     char href[LIBGPX__XML_STRING_ALLOCATED_LENGTH];
@@ -106,7 +115,9 @@ int libgpx_count_gpx_types(char* gpx, libgpx_GPX* sgpx);
 
 void libgpx_parse_gpx(unsigned char* gpx, libgpx_GPX* sgpx);
 
-#ifdef _cplusplus
+void libgpx_bounding_box_from_gpx_object(libgpx_GPX* sgpx, libgpx_BoundingBox* box);
+
+#ifdef __cplusplus
 }
 #endif
 #endif /** libgpx.h */

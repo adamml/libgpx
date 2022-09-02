@@ -449,3 +449,47 @@ void libgpx_parse_gpx(unsigned char* gpx, libgpx_GPX* sgpx){
   sgpx->n_GPXPointCollection = collection;
   /** ---------------------- */
 }
+
+void libgpx_bounding_box_from_gpx_object(libgpx_GPX* sgpx, libgpx_BoundingBox* box){
+
+  float max_ele = -20000;
+  if(max_ele){
+    float min_ele = 20000;
+    if(min_ele){
+      float max_lat = -90;
+      float min_lat = 90;
+      float max_lon = -180;
+      float min_lon = 180;
+
+      int i = 0;
+      while(i<sgpx->n_GPXPoint){
+        if(sgpx->points[i].latitude < min_lat){
+          min_lat = sgpx->points[i].latitude;
+        }
+        if(sgpx->points[i].longitude < min_lon){
+          min_lon = sgpx->points[i].longitude;
+        }
+        if(sgpx->points[i].elevation < min_ele){
+          min_ele = sgpx->points[i].elevation;
+        }
+        if(sgpx->points[i].elevation > max_ele){
+          max_ele = sgpx->points[i].elevation;
+        }
+        if(sgpx->points[i].latitude > max_lat){
+          max_lat = sgpx->points[i].latitude;
+        }
+        if(sgpx->points[i].longitude > max_lon){
+          max_lon = sgpx->points[i].longitude;
+        }
+        ++i;
+      }
+      box->min_ele = min_ele;
+      box->min_lat = min_lat;
+      box->min_lon = min_lon;
+      box->max_ele = max_ele;
+      box->max_lat = max_lat;
+      box->max_lon = max_lon;
+    }
+  }
+
+}
